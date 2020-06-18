@@ -1,0 +1,7 @@
+com\abel\ssm\controller\PermissionController.class
+com\abel\ssm\controller\ProductController.class
+com\abel\ssm\controller\RoleController.class
+com\abel\ssm\controller\OrdersController.class
+com\abel\ssm\controller\SysLogController.class
+com\abel\ssm\controller\LogAop.class
+com\abel\ssm\controller\UserController.class

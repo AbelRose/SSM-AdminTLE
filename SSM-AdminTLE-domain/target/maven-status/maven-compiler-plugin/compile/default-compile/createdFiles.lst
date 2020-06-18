@@ -1,0 +1,8 @@
+com\abel\domain\Member.class
+com\abel\domain\Permission.class
+com\abel\domain\Product.class
+com\abel\domain\UserInfo.class
+com\abel\domain\Role.class
+com\abel\domain\SysLog.class
+com\abel\domain\Traveller.class
+com\abel\domain\Orders.class

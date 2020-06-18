@@ -1,0 +1,12 @@
+com\abel\service\impl\UserServiceImpl.class
+com\abel\service\IPermissionService.class
+com\abel\service\impl\PermissionServiceImpl.class
+com\abel\service\IUserService.class
+com\abel\service\impl\SysLogServiceImpl.class
+com\abel\service\IRoleService.class
+com\abel\service\impl\OrdersServiceImpl.class
+com\abel\service\impl\ProductServiceImpl.class
+com\abel\service\IProductService.class
+com\abel\service\impl\RoleServiceImpl.class
+com\abel\service\IOrdersService.class
+com\abel\service\ISysLogService.class
