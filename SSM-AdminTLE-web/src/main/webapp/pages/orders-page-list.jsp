@@ -9,15 +9,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-
-
-
 <title>数据 - AdminLTE</title>
-<meta name="description" content="AdminLTE2定制版">
-<meta name="keywords" content="AdminLTE2定制版">
-
-
-
+<meta name="description" content="AdminLTE">
+<meta name="keywords" content="AdminLTE">
 
 <!-- Tell the browser to be responsive to screen width -->
 <meta
@@ -54,13 +48,6 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
-
-
-
-
-
-
 
 <!-- jQuery 2.2.3 -->
 <!-- jQuery UI 1.11.4 -->
@@ -160,9 +147,7 @@
 		<!-- 内容区域 -->
 		<!-- @@master = admin-layout.html-->
 		<!-- @@block = content -->
-
 		<div class="content-wrapper">
-
 			<!-- 内容头部 -->
 			<section class="content-header">
 				<h1>
@@ -175,21 +160,16 @@
 				</ol>
 			</section>
 			<!-- 内容头部 /-->
-
 			<!-- 正文区域 -->
 			<section class="content">
-
 				<!-- .box-body -->
 				<div class="box box-primary">
 					<div class="box-header with-border">
 						<h3 class="box-title">列表</h3>
 					</div>
-
 					<div class="box-body">
-
 						<!-- 数据表格 -->
 						<div class="table-box">
-
 							<!--工具栏-->
 							<div class="pull-left">
 								<div class="form-group form-inline">
@@ -221,7 +201,6 @@
 								</div>
 							</div>
 							<!--工具栏/-->
-
 							<!--数据列表-->
 							<table id="dataList"
 								class="table table-bordered table-striped table-hover dataTable">
@@ -240,10 +219,7 @@
 									</tr>
 								</thead>
 								<tbody>
-
-
 									<c:forEach items="${pageInfo.list}" var="orders">  <!-- pageInfo.list 得到的是分页的-->
-
 										<tr>
 											<td><input name="ids" type="checkbox"></td>
 											<td>${orders.id }</td>
@@ -272,31 +248,30 @@
                             </tfoot>-->
 							</table>
 							<!--数据列表/-->
-
-
-
 						</div>
 						<!-- 数据表格 /-->
-
-
 					</div>
 					<!-- /.box-body -->
-
 					<!-- .box-footer-->
                 <div class="box-footer">
                     <div class="pull-left">
-						<div class="pull-left">
+<%--						<div class="pull-left">--%>
 							<div class="form-group form-inline">
-								总共2 页，共14 条数据。 每页
+								总共${pageInfo.pages}页，共 ${pageInfo.total}条数据。 每页
 								<select class="form-control" id="changePageSize" onchange="changePageSize()">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
+									<option value="1" ${pageInfo.pageSize == 1 ? 'selected="selected"':'' }>1</option>
+									<option value="2" ${pageInfo.pageSize == 2 ? 'selected="selected"':'' }>2</option>
+									<option value="3" ${pageInfo.pageSize == 3 ? 'selected="selected"':'' }>3</option>
+									<option value="4" ${pageInfo.pageSize == 4 ? 'selected="selected"':'' }>4</option>
+									<option value="5" ${pageInfo.pageSize == 5 ? 'selected="selected"':'' }>5</option>
+<%--									<option>1</option>--%>
+<%--									<option>2</option>--%>
+<%--									<option>3</option>--%>
+<%--									<option>4</option>--%>
+<%--									<option>5</option>--%>
 								</select> 条
 							</div>
-						</div>
+<%--						</div>--%>
                     </div>
 
                     <div class="box-tools pull-right">
@@ -305,17 +280,19 @@
 								<!--需要修改的部分-->
                                 <a href="${pageContext.request.contextPath}/orders/findAll.do?page=1&size=${pageInfo.pageSize}" aria-label="Previous">首页</a>
                             </li>
-                            <li><a href="${pageContext.request.contextPath}/orders/findAll.do?page=1&size=${pageInfo.pageNum-1}">上一页</a></li>
-
+<%--                            <li><a href="${pageContext.request.contextPath}/orders/findAll.do?page=1&size=${pageInfo.pageNum-1}">上一页</a></li>--%>
+							<li><a href="${pageContext.request.contextPath}/orders/findAll.do?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">上一页</a></li>
 							<c:forEach begin="1" end="${pageInfo.pages}" var="pageNum">
 								<li><a href="${pageContext.request.contextPath}/orders/findAll.do?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
 							</c:forEach>
 
 
-                            <li><a href="${pageContext.request.contextPath}/orders/findAll.do?page=1&size=${pageInfo.pageNum+1}">下一页</a></li>
+<%--                            <li><a href="${pageContext.request.contextPath}/orders/findAll.do?page=1&size=${pageInfo.pageNum+1}">下一页</a></li>--%>
+							<li><a href="${pageContext.request.contextPath}/orders/findAll.do?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">下一页</a></li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/orders/findAll.do?page=1&size=${pageInfo.pages}" aria-label="Next">尾页</a>  <!--pageInfo.pages代表总页数-->
-                            </li>
+<%--                                <a href="${pageContext.request.contextPath}/orders/findAll.do?page=1&size=${pageInfo.pages}" aria-label="Next">尾页</a>  <!--pageInfo.pages代表总页数-->--%>
+								<a href="${pageContext.request.contextPath}/orders/findAll.do?page=${pageInfo.pages}&size=${pageInfo.pageSize}" aria-label="Next">尾页</a>
+							</li>
                         </ul>
                     </div>
 
@@ -440,9 +417,9 @@
 			var pageSize = $("#changePageSize").val();
 
 			//向服务器发送请求，改变没页显示条数
-			location.href = "${pageContext.request.contextPath}/orders/findAll.do?page=1&size="
-					+ pageSize;
+			location.href = "${pageContext.request.contextPath}/orders/findAll.do?page=&size=" + pageSize;
 		}
+
 		$(document).ready(function() {
 			// 选择框
 			$(".select2").select2();
